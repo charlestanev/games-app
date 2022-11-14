@@ -1,5 +1,5 @@
 const LatestGame = (
-	game
+	{ game }
 ) => {
 	return (
 		<div className="game">
