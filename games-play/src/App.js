@@ -8,6 +8,7 @@ import CreateGame from './components/CreateGame/CreateGame.js';
 import Catalog from './components/Catalog/Catalog.js';
 import { useEffect, useState } from 'react';
 import * as gameService from './services/gameService.js';
+import GameDetails from './components/GameDetails/GameDetails.js';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
 					<Route path='/register' element={<Register />} />
 					<Route path='/create' element={<CreateGame />} />
 					<Route path='/catalog' element={<Catalog games={games} />} />
+					<Route path='/catalog/:gameId' element={<GameDetails games={games} />} />
 				</Routes>
 
 			</main>
