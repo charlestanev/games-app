@@ -1,8 +1,6 @@
 import CatalogItem from "./CatalogItem/CatalogItem.js";
 
-const Catalog = ({
-	games
-}) => {
+const Catalog = ({ games }) => {
 	return (
 		<section id="catalog-page">
 			<h1>All Games</h1>
