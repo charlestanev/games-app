@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const GameDetails = ({ games }) => {
+const GameDetails = ({
+	games,
+	addComment
+}) => {
 	const { gameId } = useParams();
 	const [comment, setComment] = useState({
 		username: '',
@@ -10,12 +13,18 @@ const GameDetails = ({ games }) => {
 
 	const game = games.find(x => x._id == gameId);
 
-	const addCommentHandler = () => {
+	const addCommentHandler = (e) => {
+		e.preventDefault();
+
+		const result = `${comment.username}: ${comment.comment}`;
+
+		addComment(gameId, result)
 		console.log(comment);
 	}
 
 	const onChange = (e) => {
 		setComment(state => ({
+			...state,
 			[e.target.name]: e.target.value
 		}))
 	}
@@ -26,12 +35,12 @@ const GameDetails = ({ games }) => {
 			<h1>Game Details</h1>
 			<div className="info-section">
 				<div className="game-header">
-					<img className="game-img" src={game.imageUrl} />
-					<h1>{game.title}</h1>
-					<span className="levels">MaxLevel: {game.maxLevel}</span>
-					<p className="type">{game.category}</p>
+					<img className="game-img" src={games.imageUrl} />
+					<h1>{games.title}</h1>
+					<span className="levels">MaxLevel: {games.maxLevel}</span>
+					<p className="type">{games.category}</p>
 				</div>
-				<p className="text">{game.summary}</p>
+				<p className="text">{games.summary}</p>
 				{/* Bonus ( for Guests and Users ) */}
 				<div className="details-comments">
 					<h2>Comments:</h2>
@@ -61,7 +70,7 @@ const GameDetails = ({ games }) => {
 			{/* Add Comment ( Only for logged-in users, which is not creators of the current game ) */}
 			<article className="create-comment">
 				<label>Add new comment:</label>
-				<form className="form">
+				<form className="form" onSubmit={addCommentHandler}>
 					<input
 						type="text"
 						name="username"
@@ -80,7 +89,8 @@ const GameDetails = ({ games }) => {
 					<input
 						className="btn submit"
 						type="submit"
-						value="Add Comment" />
+						value="Add Comment"
+					/>
 				</form>
 			</article>
 		</section>
