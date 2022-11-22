@@ -104,7 +104,7 @@ const GameDetails = ({
 					/>
 
 					{error.username &&
-						<span style={{ color: 'red' }}>error.username</span>
+						<span style={{ color: 'red' }}>{error.username}</span>
 					}
 
 					<textarea
