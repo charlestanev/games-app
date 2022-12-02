@@ -10,7 +10,7 @@ export const request = async (method, url, data) => {
 				headers: {
 					'content-type': 'application/json'
 				},
-				data: JSON.stringify(data)
+				body: JSON.stringify(data)
 			})
 		}
 
@@ -24,3 +24,8 @@ export const request = async (method, url, data) => {
 	}
 }
 // export default request;
+export const get = request.bind({}, 'GET')
+export const post = request.bind({}, 'POST')
+export const patch = request.bind({}, 'PATCH')
+export const put = request.bind({}, 'PUT')
+export const del = request.bind({}, 'DELETE')

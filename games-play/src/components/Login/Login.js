@@ -1,14 +1,28 @@
 import { Link } from "react-router-dom";
+import { login } from "../../services/authService.js";
+
 
 const Login = () => {
 	const onSubmit = (e) => {
 		e.preventDefault();
+
 		const {
 			email,
 			password,
-		} = Object.fromEntries(new FormData(e.target))
-		console.log(email, password);
-	}
+		} = Object.fromEntries(new FormData(e.target));
+
+		// console.log(email + password)
+
+		login(email, password)
+			.then(authData => {
+				console.log(authData);
+			});
+
+		// login(email, password)
+		// 	.then((authData) => {
+		// 		console.log(authData);
+		// 	})
+	};
 
 	return (
 		<section id="login-page" className="auth">
