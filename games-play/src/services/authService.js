@@ -17,5 +17,7 @@ export const logout = async (accessToken) => {
 	} catch (error) {
 		alert(error);
 	}
-
 }
+
+export const register = (email, password) =>
+	request.post(`${baseUrl}/register`, { email, password });
