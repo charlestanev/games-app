@@ -13,6 +13,8 @@ export const logout = async (accessToken) => {
 			}
 		});
 
+		localStorage.clear();
+
 		return response;
 	} catch (error) {
 		alert(error);

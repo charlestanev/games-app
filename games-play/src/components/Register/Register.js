@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../services/authService.js";
 import { AuthContext } from '../../context/AuthContext.js';
 
-; const Register = () => {
+const Register = () => {
 	const { userLogin } = useContext(AuthContext);
 	const navigate = useNavigate()
 
